@@ -1,0 +1,45 @@
+@host = http://localhost:5055
+@token = pega-aqui-el-token
+
+POST {{host}}/api/auth/registro
+Content-Type: application/json
+
+{ "correo": "ana@correo.com", "clave": "Clave123" }
+
+###
+POST {{host}}/api/auth/login
+Content-Type: application/json
+
+{ "correo": "ana@correo.com", "clave": "Clave123" }
+
+###
+POST {{host}}/api/auth/login
+Content-Type: application/json
+
+{ "correo": "ana@correo.com", "clave": "incorrecta" }
+
+###
+POST {{host}}/api/auth/login
+Content-Type: application/json
+
+{ "correo": "admin@productos.com", "clave": "Admin123!" }
+
+###
+GET {{host}}/api/productos
+
+###
+POST {{host}}/api/productos
+Content-Type: application/json
+
+{ "nombre": "Monitor LG 24", "precio": 499.00, "stock": 8, "categoriaId": 3 }
+
+###
+POST {{host}}/api/productos
+Content-Type: application/json
+Authorization: Bearer {{token}}
+
+{ "nombre": "Monitor LG 24", "precio": 499.00, "stock": 8, "categoriaId": 3 }
+
+###
+DELETE {{host}}/api/productos/4
+Authorization: Bearer {{token}}

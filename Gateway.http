@@ -1,0 +1,64 @@
+@gateway = http://localhost:5000
+@token = pega-aqui-el-token
+
+POST {{gateway}}/gateway/auth/login
+Content-Type: application/json
+
+{ "correo": "admin@productos.com", "clave": "Admin123!" }
+
+###
+GET {{gateway}}/gateway/productos
+
+###
+GET {{gateway}}/gateway/productos/1
+
+###
+GET {{gateway}}/gateway/productos/999
+
+###
+POST {{gateway}}/gateway/productos
+Content-Type: application/json
+
+{ "nombre": "Monitor LG 24", "precio": 499.00, "stock": 8, "categoriaId": 3 }
+
+###
+POST {{gateway}}/gateway/productos
+Content-Type: application/json
+Authorization: Bearer {{token}}
+
+{ "nombre": "Monitor LG 24", "precio": 499.00, "stock": 8, "categoriaId": 3 }
+
+###
+GET {{gateway}}/gateway/clientes
+
+###
+GET {{gateway}}/gateway/clientes
+Authorization: Bearer {{token}}
+
+###
+PUT {{gateway}}/gateway/productos/4
+Content-Type: application/json
+Authorization: Bearer {{token}}
+
+{ "nombre": "Monitor LG 24", "precio": 450.00, "stock": 10, "categoriaId": 3 }
+
+###
+POST {{gateway}}/gateway/auth/registro
+Content-Type: application/json
+
+{ "correo": "user@demo.com", "clave": "User123!" }
+
+###
+DELETE {{gateway}}/gateway/productos/4
+Authorization: Bearer {{token}}
+
+###
+GET {{gateway}}/gateway/clientes/999
+Authorization: Bearer {{token}}
+
+###
+GET http://localhost:5056/api/clientes
+
+###
+GET {{gateway}}/gateway/clientes/1
+Authorization: Bearer {{token}}

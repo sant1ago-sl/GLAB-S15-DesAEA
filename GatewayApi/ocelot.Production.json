@@ -1,0 +1,37 @@
+{
+  "Routes": [
+    {
+      "UpstreamPathTemplate": "/gateway/auth/{everything}",
+      "UpstreamHttpMethod": [ "Post" ],
+      "DownstreamPathTemplate": "/api/auth/{everything}",
+      "DownstreamScheme": "https",
+      "DownstreamHostAndPorts": [ { "Host": "REEMPLAZA-productos.azurewebsites.net", "Port": 443 } ]
+    },
+    {
+      "UpstreamPathTemplate": "/gateway/productos{everything}",
+      "UpstreamHttpMethod": [ "Get" ],
+      "DownstreamPathTemplate": "/api/productos{everything}",
+      "DownstreamScheme": "https",
+      "DownstreamHostAndPorts": [ { "Host": "REEMPLAZA-productos.azurewebsites.net", "Port": 443 } ]
+    },
+    {
+      "UpstreamPathTemplate": "/gateway/productos{everything}",
+      "UpstreamHttpMethod": [ "Post", "Put", "Delete" ],
+      "DownstreamPathTemplate": "/api/productos{everything}",
+      "DownstreamScheme": "https",
+      "DownstreamHostAndPorts": [ { "Host": "REEMPLAZA-productos.azurewebsites.net", "Port": 443 } ],
+      "AuthenticationOptions": { "AuthenticationProviderKeys": [ "Bearer" ] }
+    },
+    {
+      "UpstreamPathTemplate": "/gateway/clientes{everything}",
+      "UpstreamHttpMethod": [ "Get" ],
+      "DownstreamPathTemplate": "/api/clientes{everything}",
+      "DownstreamScheme": "https",
+      "DownstreamHostAndPorts": [ { "Host": "REEMPLAZA-clientes.azurewebsites.net", "Port": 443 } ],
+      "AuthenticationOptions": { "AuthenticationProviderKeys": [ "Bearer" ] }
+    }
+  ],
+  "GlobalConfiguration": {
+    "BaseUrl": "https://REEMPLAZA-gateway.azurewebsites.net"
+  }
+}
